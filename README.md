@@ -13,3 +13,13 @@ git commit -m "remove tracked file and updat .gitignore"
 git rm --catched temp
 git rm --temp
 vim gitignore
+%pip install pandas
+import pandas as pd
+#Summary Statistics & Missing-Value Report
+df = pd.read_csv("togo-dapaong_qc.csv")  
+df.describe()
+missing = df.isna().sum()
+missing[missing > 0]
+# Columns with >5% missing
+threshold = 0.05 * len(df)
+missing[missing > threshold]
